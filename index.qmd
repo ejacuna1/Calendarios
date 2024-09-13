@@ -15,6 +15,10 @@ format:
     progress: true  # Muestra la barra de progreso
     hash: true      # Permite navegar con URLs únicas por diapositiva
     scrollable: true
+title-slide-attributes:
+  data-background-image: "exports/figs/fondo.jpg"
+  data-background-size: cover
+  data-background-opacity: "1"   
 editor: visual
 ---
 
@@ -374,3 +378,7 @@ calendR(year = 2024,
 
 ```
 :::
+
+## Comentarios Finales
+
+![Fin](https://media1.tenor.com/m/0M3Zi570Ji0AAAAC/se-acabo-terminamos.gif)
