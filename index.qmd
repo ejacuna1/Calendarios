@@ -1,0 +1,376 @@
+---
+title: "Calendarios personalizados"
+author: "Edouard Acuña Kohnenkamp"
+format: 
+  revealjs:
+    theme: white    # Cambia el tema; opciones: black, white, league, beige, etc.
+    transition: slide # Transición entre diapositivas; opciones: none, fade, slide, convex, concave, zoom.
+    slide-number: true # Muestra el número de diapositiva
+    controls: true    # Agrega controles de navegación
+    width: 1280    # Ancho personalizado de las diapositivas
+    height: 720       # Altura personalizada
+    transition-speed: slow
+    highlight-style: monokai # Estilo de resaltado de código
+    toc: true # Genera una tabla de contenido al inicio
+    progress: true  # Muestra la barra de progreso
+    hash: true      # Permite navegar con URLs únicas por diapositiva
+    scrollable: true
+editor: visual
+---
+
+## Librerías
+
+Cargar la librería **calendarR**
+
+```{r}
+#| echo: true
+#| eval: true
+
+library(calendR)
+
+```
+
+<br><br>
+
+Página web original de códigos modificados
+
+[R CHARTS calendarios](https://r-charts.com/es/miscelanea/calendario-mensual-ggplot2/)
+
+## Primer Calendario
+
+Calendario básico de la librería **calendR**
+
+::: panel-tabset
+## Código
+
+```{r}
+#| echo: true
+#| eval: false
+calendR() # Por defecto crea el calendario del año en curso
+```
+
+## Plot
+
+```{r}
+#| echo: false
+#| eval: true
+#| fig-width: 10
+#| fig-height: 10
+#| fig-align: "center"
+
+calendR() # Por defecto crea el calendario del año en curso
+
+```
+:::
+
+## Segundo Calendario
+
+Este calendario inicia todas las semanas en un día específico (ej: lunes)
+
+::: panel-tabset
+## Código
+
+```{r}
+#| echo: true
+#| eval: false
+calendR(year = 2024,
+        start = "M") # Comienzo de las semanas en lunes
+```
+
+## Plot
+
+```{r}
+#| echo: false
+#| eval: true
+#| fig-width: 10
+#| fig-height: 10
+#| fig-align: "center"
+
+calendR(year = 2024,
+        start = "M") # Comienzo de las semanas en lunes
+
+```
+:::
+
+## Tercer Calendario
+
+Este calendario del año 2024 resalta los días feriados con color *orange*
+
+::: panel-tabset
+## Código
+
+```{r}
+#| echo: true
+#| eval: false
+# Días feriados de Chile en 2024
+feriados_2024 <- c(1, 89, 90, 122, 142, 172, 180, 198, 228, 262, 263, 264, 286, 301, 305, 340, 360)
+
+calendR(year = 2024,
+        start = "M",
+        special.days = feriados_2024,      # Días feriados
+        special.col = "orange",         # Color de los días feriados
+        low.col = "white")                 # Color de fondo del resto de días
+```
+
+## Plot
+
+```{r}
+#| echo: false
+#| eval: true
+#| fig-width: 10
+#| fig-height: 10
+#| fig-align: "center"
+
+# Días feriados de Chile en 2024
+feriados_2024 <- c(1, 89, 90, 122, 142, 172, 180, 198, 228, 262, 263, 264, 286, 301, 305, 340, 360)
+
+calendR(year = 2024,
+        start = "M",
+        special.days = feriados_2024,      # Días feriados
+        special.col = "orange",         # Color de los días feriados
+        low.col = "white")                 # Color de fondo del resto de días
+```
+:::
+
+## Cuarto Calendario
+
+Este calendario del año 2024 resalta los fines de semana con color *orange*
+
+::: panel-tabset
+## Código
+
+```{r}
+#| echo: true
+#| eval: false
+calendR(year = 2025,
+        start = "M",
+        special.days = "weekend",
+        special.col = "orange") # Colorear los fines de semana
+```
+
+## Plot
+
+```{r}
+#| echo: false
+#| eval: true
+#| fig-width: 10
+#| fig-height: 10
+#| fig-align: "center"
+
+calendR(year = 2025,
+        start = "M",
+        special.days = "weekend",
+        special.col = "orange") # Colorear los fines de semana
+
+```
+:::
+
+## Quinto Calendario
+
+Este calendario del año 2024 tiene orientación *portrait* y los nombres de los meses a la izquierda
+
+::: panel-tabset
+## Código
+
+```{r}
+#| echo: true
+#| eval: false
+calendR(year = 2024,
+        orientation = "portrait",  # Equivalente a: orientation = "p"
+        months.pos = 0)            # Nombres de los meses a la izquierda
+
+```
+
+## Plot
+
+```{r}
+#| echo: false
+#| eval: true
+#| fig-width: 10
+#| fig-height: 10
+#| fig-align: "center"
+
+calendR(year = 2024,
+        orientation = "portrait",  # Equivalente a: orientation = "p"
+        months.pos = 0)            # Nombres de los meses a la izquierda
+
+```
+:::
+
+## Sexto Calendario
+
+Este calendario corresponde al mes de septiembre del año 2024
+
+::: panel-tabset
+## Código
+
+```{r}
+#| echo: true
+#| eval: false
+calendR(year = 2024, month = 9)
+
+```
+
+## Plot
+
+```{r}
+#| echo: false
+#| eval: true
+#| fig-width: 10
+#| fig-height: 10
+#| fig-align: "center"
+
+calendR(year = 2024, month = 9)
+
+```
+:::
+
+## Septimo Calendario
+
+Este calendario corresponde al mes de septiembre del año 2024 y añade las fases lunares a los días
+
+::: panel-tabset
+## Código
+
+```{r}
+#| echo: true
+#| eval: false
+calendR(year = 2024,
+        month = 9,  
+        lunar = TRUE,         # Añade lunas al calendario mensual
+        lunar.col = "gray60", # Color del área no visible de las lunas
+        lunar.size = 10)       # Tamaño de las lunas
+
+```
+
+## Plot
+
+```{r}
+#| echo: false
+#| eval: true
+#| fig-width: 10
+#| fig-height: 10
+#| fig-align: "center"
+
+calendR(year = 2024,
+        month = 9,  
+        lunar = TRUE,         # Añade lunas al calendario mensual
+        lunar.col = "gray60", # Color del área no visible de las lunas
+        lunar.size = 10)       # Tamaño de las lunas
+
+```
+:::
+
+## Octavo Calendario
+
+Calendario personalizado
+
+::: panel-tabset
+## Código
+
+```{r}
+#| echo: true
+#| eval: false
+
+calendR(year = 2024,
+        start = "M",               # Comienzo de la semana en lunes
+        mbg.col = 1,               # Color de fondo del nombre de los meses
+        months.col = "white",      # Color del texto del nombre de los meses
+        special.days = "weekend",  # Colorea los fines de semana
+        special.col = "aquamarine", # Color de los special.days
+        lty = 0,                   # Tipo de linea
+        bg.col = "gray60",        # Color de fondo
+        weeknames.col = "black",   # Color de los nombres de los días de la semana
+        days.col = "black",        # Color de los números de los días
+        title = "Calendario 2024", # Título
+        title.size = 30,                          # Tamaño del título
+        orientation = "p")         # Orientación vertical   
+
+```
+
+## Plot
+
+```{r}
+#| echo: false
+#| eval: true
+#| fig-width: 10
+#| fig-height: 10
+#| fig-align: "center"
+
+calendR(year = 2024,
+        start = "M",               # Comienzo de la semana en lunes
+        mbg.col = 1,               # Color de fondo del nombre de los meses
+        months.col = "white",      # Color del texto del nombre de los meses
+        special.days = "weekend",  # Colorea los fines de semana
+        special.col = "aquamarine", # Color de los special.days
+        lty = 0,                   # Tipo de linea
+        bg.col = "gray60",        # Color de fondo
+        weeknames.col = "black",   # Color de los nombres de los días de la semana
+        days.col = "black",        # Color de los números de los días
+        title = "Calendario 2024", # Título
+        title.size = 30,                          # Tamaño del título
+        orientation = "p")         # Orientación vertical   
+
+```
+:::
+
+## Noveno Calendario
+
+Calendario personalizado con imagen de fondo obtenida desde internet
+
+::: panel-tabset
+## Código
+
+```{r}
+#| echo: true
+#| eval: false
+
+imagen <- "https://mrwallpaper.com/images/high/vertical-blue-vector-e7an6iv3t1lcl8i0.webp"
+
+calendR(year = 2024,
+        start = "M",               # Comienzo de la semana en lunes
+        mbg.col = 1,               # Color de fondo del nombre de los meses
+        months.col = "white",      # Color del texto del nombre de los meses
+        special.days = "weekend",  # Colorea los fines de semana
+        special.col = "aquamarine", # Color de los special.days
+        lty = 0,                   # Tipo de linea
+        bg.col = "gray60",        # Color de fondo
+        weeknames.col = "white",   # Color de los nombres de los días de la semana
+        days.col = "black",        # Color de los números de los días
+        title = "Calendario 2024", # Título
+        title.size = 30,                          # Tamaño del título
+        title.col = "white",
+        orientation = "p", # Orientación vertical 
+        bg.img = imagen)           
+
+```
+
+## Plot
+
+```{r}
+#| echo: false
+#| eval: true
+#| fig-width: 10
+#| fig-height: 10
+#| fig-align: "center"
+
+imagen <- "https://mrwallpaper.com/images/high/vertical-blue-vector-e7an6iv3t1lcl8i0.webp"
+
+calendR(year = 2024,
+        start = "M",               # Comienzo de la semana en lunes
+        mbg.col = 1,               # Color de fondo del nombre de los meses
+        months.col = "white",      # Color del texto del nombre de los meses
+        special.days = "weekend",  # Colorea los fines de semana
+        special.col = "aquamarine", # Color de los special.days
+        lty = 0,                   # Tipo de linea
+        bg.col = "gray60",        # Color de fondo
+        weeknames.col = "white",   # Color de los nombres de los días de la semana
+        days.col = "black",        # Color de los números de los días
+        title = "Calendario 2024", # Título
+        title.size = 30,                          # Tamaño del título
+        title.col = "white",
+       orientation = "p", # Orientación vertical 
+        bg.img = imagen)           
+
+```
+:::
