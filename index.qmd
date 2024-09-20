@@ -381,4 +381,6 @@ calendR(year = 2024,
 
 ## Comentarios Finales
 
+Esta presentacion ha finalizado
+
 ![Fin](https://media1.tenor.com/m/0M3Zi570Ji0AAAAC/se-acabo-terminamos.gif)
