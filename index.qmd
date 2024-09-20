@@ -24,7 +24,7 @@ editor: visual
 
 ## Librerías
 
-Cargar la librería **calendarR**
+Cargar librería **calendarR**
 
 ```{r}
 #| echo: true
